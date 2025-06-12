@@ -1,1 +1,1 @@
-this is my final year project, im from portugal
+this is my final year project, i'm using Wamp64, My operating system is Windows.
