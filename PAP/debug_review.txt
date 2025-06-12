@@ -1,0 +1,15 @@
+Array
+(
+    [user] => Array
+        (
+            [id] => 
+            [username] => alex
+            [email] => alex@gmail.com
+        )
+
+    [username] => alex
+    [email] => alex@gmail.com
+)
+
+
+{"review":"dd","rating":5}

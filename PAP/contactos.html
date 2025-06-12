@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contactos | Iron Haven</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .contact-flex {
+      display: flex; gap: 42px; justify-content: center; align-items: flex-start; flex-wrap: wrap;
+      margin: 38px 0;
+    }
+    .contact-info {
+      background: var(--card-bg); padding: 30px 22px; border-radius: 18px; box-shadow: var(--shadow); min-width:220px; max-width:320px;
+    }
+    .contact-info h3 { color: var(--accent);}
+    .contact-info ul { list-style: none; padding: 0; color: var(--gray);}
+    .contact-info ul li { margin-bottom: 10px;}
+    .contact-form {
+      background: var(--card-bg); padding: 32px 22px; border-radius: 18px; box-shadow: var(--shadow); min-width:260px; max-width:400px;
+    }
+    .contact-form label { display:block; margin-top:10px; margin-bottom:4px;}
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 8px; margin-bottom:12px; border-radius:4px; border: 1px solid #ccc; background:#fff; color:#111;
+    }
+    .contact-form button { width:100%; padding:12px; border-radius:6px; border:none; background:var(--accent2); color:#18191c; font-weight:600; cursor:pointer;}
+    .contact-form button:hover { filter:brightness(1.14);}
+    .contact-map { margin:32px auto 0 auto; max-width:520px; border-radius:18px; overflow:hidden; box-shadow:0 3px 18px #FFD70044;}
+    @media (max-width: 900px) {
+      .contact-flex { flex-direction:column; align-items:center;}
+      .contact-info, .contact-form { max-width:95vw;}
+      .contact-map { max-width:98vw;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-flex">
+      <ul class="nav-links nav-left">
+        <li><a href="index.php">Início</a></li>
+        <li><a href="planos.html">Planos</a></li>
+      </ul>
+      <a href="index.php" class="nav-logo">
+        <img src="logo2.png" alt="Iron Haven Logo">
+      </a>
+      <ul class="nav-links nav-right">
+        <li><a href="equipa.html">Equipa</a></li>
+        <li><a href="marcacoes.html">Marcações</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="login.html" class="nav-btn">Login</a></li>
+      </ul>
+      <button id="nav-toggle" aria-label="Abrir Menu"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+  <main class="main-content">
+    <h1 class="section-title">Contacte-nos</h1>
+    <div class="contact-flex">
+      <div class="contact-info">
+        <h3>Iron Haven Gym</h3>
+        <ul>
+          <li><i class="fa-solid fa-location-dot"></i> Rua do Fitness 123, Porto</li>
+          <li><i class="fa-solid fa-phone"></i> 222 555 888</li>
+          <li><i class="fa-solid fa-envelope"></i> geral@ironhaven.pt</li>
+        </ul>
+        <h4 style="margin-top:20px;">Horário</h4>
+        <ul>
+          <li>Seg - Sex: 7h - 23h</li>
+          <li>Sábado: 9h - 21h</li>
+          <li>Domingo: 9h - 14h</li>
+        </ul>
+      </div>
+      <form class="contact-form" autocomplete="off" onsubmit="event.preventDefault();alert('Mensagem enviada! Entraremos em contacto.');this.reset();">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <div class="contact-map">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-8.611,41.145,-8.607,41.149&layer=mapnik"
+              style="border:0;width:100%;height:240px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </main>
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <img src="logo2.png" alt="Iron Haven Logo">
+        <p>Iron Haven &copy; 2025 - Todos os direitos reservados</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.php">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="planos.html">Planos</a>
+        <a href="marcacoes.html">Marcações</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksLeft = document.querySelector('.nav-left');
+    const navLinksRight = document.querySelector('.nav-right');
+    navToggle.onclick = () => {
+      navLinksLeft.classList.toggle('open');
+      navLinksRight.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
