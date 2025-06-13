@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Nós | Iron Haven</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .about-box {
+      background: var(--card-bg); border-radius: 22px; box-shadow: var(--shadow); padding: 40px 32px; max-width: 800px; margin: 34px auto;
+    }
+    .about-box img {
+      width: 120px; display: block; margin: 0 auto 20px auto; border-radius: 16px;
+      box-shadow: 0 3px 18px #FFD70033;
+    }
+    .about-grid {
+      display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin: 44px 0 10px;
+    }
+    .about-card {
+      background: #1a1a1e; border-radius: 14px; padding: 28px 18px; min-width:210px; max-width:270px; box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .about-card i { font-size: 2.1rem; color: var(--accent2); margin-bottom: 10px;}
+    .about-card h4 { margin-bottom: 9px;}
+    @media (max-width: 850px) {
+      .about-grid { flex-direction: column; align-items: center;}
+      .about-card { width:90%; max-width:95vw;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-flex">
+      <ul class="nav-links nav-left">
+        <li><a href="index.php">Início</a></li>
+        <li><a href="planos.html">Planos</a></li>
+      </ul>
+      <a href="index.php" class="nav-logo">
+        <img src="logo2.png" alt="Iron Haven Logo">
+      </a>
+      <ul class="nav-links nav-right">
+        <li><a href="equipa.html">Equipa</a></li>
+        <li><a href="marcacoes.html">Marcações</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="login.html" class="nav-btn">Login</a></li>
+      </ul>
+      <button id="nav-toggle" aria-label="Abrir Menu"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+  <main class="main-content">
+    <div class="about-box">
+      <img src="logo2.png" alt="Iron Haven">
+      <h1 class="section-title">Sobre o Iron Haven</h1>
+      <p>O Iron Haven nasceu para ser o teu refúgio de fitness e bem-estar. Mais do que um ginásio, somos uma comunidade onde cada objetivo é respeitado, cada conquista celebrada.<br><br>
+      Dispomos de instalações topo de gama, equipa qualificada e planos acessíveis para todos.<br><br>
+      Vem conhecer o espaço e transforma a tua rotina connosco!
+      </p>
+      <div class="about-grid">
+        <div class="about-card">
+          <i class="fa-solid fa-people-group"></i>
+          <h4>Comunidade Forte</h4>
+          <p>Eventos, desafios e um ambiente motivador para todos os membros.</p>
+        </div>
+        <div class="about-card">
+          <i class="fa-solid fa-shield-heart"></i>
+          <h4>Qualidade & Segurança</h4>
+          <p>Limpeza rigorosa e acompanhamento personalizado em cada treino.</p>
+        </div>
+        <div class="about-card">
+          <i class="fa-solid fa-bolt"></i>
+          <h4>Resultados Reais</h4>
+          <p>Planos ajustados para que atinja o seu máximo potencial, sem desculpas.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <img src="logo2.png" alt="Iron Haven Logo">
+        <p>Iron Haven &copy; 2025 - Todos os direitos reservados</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.php">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="planos.html">Planos</a>
+        <a href="marcacoes.html">Marcações</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksLeft = document.querySelector('.nav-left');
+    const navLinksRight = document.querySelector('.nav-right');
+    navToggle.onclick = () => {
+      navLinksLeft.classList.toggle('open');
+      navLinksRight.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
