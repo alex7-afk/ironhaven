@@ -29,3 +29,7 @@ Alias /src /path/to/ironhaven/PAP
 
 - PHP 7.x or newer
 - MySQL or compatible database server
+- 
+## New: Weight Log Tracking
+
+Logged-in users can record their weight over time. Visit `progresso.php` in the web root to add entries and view your history. Data is stored locally in `weights.json`.
