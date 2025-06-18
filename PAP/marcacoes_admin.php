@@ -17,6 +17,7 @@ if (!$isAdmin) {
 // Read all appointments
 require_once __DIR__ . '/db.php';
 $stmt = $pdo->query('SELECT id, title, email, mensagem, start, end FROM appointments ORDER BY id DESC');
+$stmt = $pdo->query('SELECT id, title, email, mensagem, appointment_type, start, end FROM appointments ORDER BY id DESC');
 $appointments = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -64,12 +65,18 @@ $appointments = $stmt->fetchAll();
           <td><?= htmlspecialchars($row['id']) ?></td>
           <td><?= htmlspecialchars($row['title']) ?></td>
           <td><?= htmlspecialchars($row['emails']) ?></td>
+          <td><?= htmlspecialchars($row['email']) ?></td>
           <td>
             <?php
               if ($row['appointment_type'] === 'training') echo "training";
               else if ($row['appointment_type'] === 'consultation') echo "consultation";
               else if ($row['appointment_type'] === 'evaluation') echo "evaluation";
               else echo htmlspecialchars($row['appointment_type']);
+              $type = $row['appointment_type'] ?? '';
+              if ($type === 'training') echo 'training';
+              else if ($type === 'consultation') echo 'consultation';
+              else if ($type === 'evaluation') echo 'evaluation';
+              else echo htmlspecialchars($type);
             ?>
           </td>
           <td><?= htmlspecialchars($row['mensagem']) ?></td>
