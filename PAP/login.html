@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Iron Haven</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-flex">
+      <ul class="nav-links nav-left">
+        <li><a href="index.php">Início</a></li>
+        <li><a href="planos.html">Planos</a></li>
+      </ul>
+      <a href="index.php" class="nav-logo">
+        <img src="logo2.png" alt="Iron Haven Logo" >
+      </a>
+      <ul class="nav-links nav-right">
+        <li><a href="equipa.html">Equipa</a></li>
+        <li><a href="marcacoes.html">Marcações</a></li>
+        <li><a href="progresso.php">Progresso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="login.html" class="nav-btn">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ <div class="register-wrapper" >
+  <form class="register-form" id="loginForm" autocomplete="off" >
+    <h2 >Entrar no Iron Haven</h2>
+    <div id="loginError" class="login-error" ></div>
+    <label for="username">Utilizador ou Email</label>
+    <input type="text" id="username" name="username" placeholder="Introduza o nome de utilizador ou email" required>
+    <label for="password">Palavra-passe</label>
+    <input type="password" id="password" name="password" placeholder="Introduza a palavra-passe" required>
+    <button type="submit" >Entrar</button>
+
+    <div class="login-options" >
+      <label >
+        <input type="checkbox" id="rememberMe" >
+        Lembrar-me
+      </label>
+      <a href="#" onclick="openModal();return false;" >Esqueceu a palavra-passe?</a>
+    </div>
+
+    <div class="register-login-link" >
+      <a href="registrar.html" >Criar Conta</a>
+    </div>
+  </form>
+</div>
+
+  <!-- Password Reset Modal -->
+  <div id="modalOverlay">
+    <div class="modal">
+      <h3>Recuperar Palavra-passe</h3>
+      <div id="modalSuccess" class="modal-success" style="display:none;"></div>
+      <div id="modalError" class="modal-error"></div>
+      <form id="resetForm" autocomplete="off">
+        <label for="resetUsername">Nome de utilizador ou email</label>
+        <input type="text" id="resetUsername" name="resetUsername" required>
+        <button type="submit" class="modal-btn">Enviar Instruções</button>
+        <button type="button" class="close-btn" onclick="closeModal()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <img src="logo2.png" alt="Iron Haven Logo">
+        <p>Iron Haven © 2025 - Todos os direitos reservados</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.php">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="planos.html">Planos</a>
+        <a href="marcacoes.html">Marcações</a>
+        <a href="progresso.php">Progresso</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Login submit handler
+    document.getElementById('loginForm').onsubmit = function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      fetch('login.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, password})
+      })
+      .then(r => r.json())
+      .then(data => {
+        if(data.success){
+          window.location.href = "index.php";
+        }else{
+          const err = document.getElementById('loginError');
+          err.style.display = 'block';
+          err.textContent = data.error || "Credenciais inválidas!";
+        }
+      })
+      .catch(()=>{
+        const err = document.getElementById('loginError');
+        err.style.display = 'block';
+        err.textContent = "Erro ao ligar ao servidor!";
+      });
+    };
+
+   function openModal(){
+      document.getElementById('modalOverlay').style.display = 'flex';
+      document.getElementById('modalError').style.display = 'none';
+      document.getElementById('modalSuccess').style.display = 'none';
+      document.getElementById('resetForm').reset();
+    }
+    function closeModal(){
+      document.getElementById('modalOverlay').style.display = 'none';
+    }
+    document.getElementById('resetForm').onsubmit = function(e){
+      e.preventDefault();
+      const resetUsername = document.getElementById('resetUsername').value.trim();
+      fetch('pedir_reset.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ username: resetUsername })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if(data.success){
+          document.getElementById('modalError').style.display = 'none';
+          const success = document.getElementById('modalSuccess');
+          success.style.display = 'block';
+          success.textContent = 'Email de recuperação enviado!';
+          if(data.link){
+            success.innerHTML += ' <a href="'+data.link+'">Link</a>';
+          }
+        }else{
+          document.getElementById('modalError').style.display = 'block';
+          document.getElementById('modalError').textContent = data.error || 'Erro ao processar pedido.';
+        }
+      })
+      .catch(()=>{
+        document.getElementById('modalError').style.display = 'block';
+        document.getElementById('modalError').textContent = 'Erro ao ligar ao servidor.';
+      });
+    }
+  </script>
+</body>
+</html>
