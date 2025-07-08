@@ -1,0 +1,64 @@
+[
+    {
+        "username": "alex4321",
+        "email": "alex4321@gmail.com",
+        "password": "$2y$10$O0PlwWcCOrtv8cT6xzdAs.\/uGPg8Z.f.jlG.d.7ZoWPOZytMd1b\/i"
+    },
+    {
+        "username": "leonor123",
+        "email": "leonor123@gmail.com",
+        "password": "$2y$10$gmuoH8AMFcU0UlM7BXbWMewu9FLRavjmh3eVG1ClhXED6LKpLWtQ."
+    },
+    {
+        "username": "arlete123",
+        "email": "arelete123@gmail.com",
+        "password": "$2y$10$y8NhhdOohMMlf.cKXuIBce7N8Nz.2h8gowQYbLtSDvOYiNA1Z5RDG"
+    },
+    {
+        "username": "alex321",
+        "email": "alex321@gmail.com",
+        "password": "$2y$10$af\/LJumAHRoWcGN2ryMIX.GB6hJAueMIZ.r.CETDp6hJwKl\/1dh0i"
+    },
+    {
+        "username": "ad",
+        "email": "ad@gmail.com",
+        "password": "$2y$10$Do\/spwQHXdMKWrDuMDvk8eO6lkf3QyOf01xEuThL3JbHCNG\/pLpxG"
+    },
+    {
+        "username": "alex",
+        "email": "alex@gmail.com",
+        "password": "$2y$10$3oFmzWvCXgd04FIxBJJBjuR3CsEufe2vSjH0FLsELA6JlmLXKI5PO"
+    },
+    {
+        "username": "teste",
+        "email": "teste@gmail.com",
+        "password": "$2y$10$XJGfOOI91pCr\/eHpVy6jDer4Y1Y3E8NMDuDhOp8jUi7bR5ydOpcWa"
+    },
+    {
+        "username": "joao",
+        "email": "joao@gmail.com",
+        "password": "$2y$10$pX84ci1W9PY8EhKHYOem5.xmdJhYU2846i0pzL39t8FB6N9hiLw\/S"
+    },
+    {
+        "username": "Telemóvel",
+        "email": "telemovel@gmail.com",
+        "password": "$2y$10$YjfALRB.yOiRYMePZ4UdquH9I6JqmtGnELwgLfUhzmIONXQrTvHzS"
+    },
+    {
+        "username": "Leonor",
+        "email": "leonormonteyro23@gmail.com",
+        "password": "$2y$10$L6spNEnddiBHCjx3xKWr8uiL7v\/Fp9SMd694zL1Xvvn6GN1kX.Owi"
+    },
+    {
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "password": "$2y$10$s37HfInFBN\/JfM12Xx3G3e5uic.hunP3vt8c3WHMGfYr30xoZQeJy",
+        "is_admin": true
+    },
+    {
+        "username": "jose",
+        "email": "10cinfor.alexandre@gmail.com",
+        "password": "$2y$12$bZUJHtIx.ZOtZODNplMNB.pi\/BvN7hQYWr4LzPtaroj96UhiF1CGu",
+        "is_admin": false
+    }
+]
