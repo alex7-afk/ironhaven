@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Iron Haven</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-flex">
+      <ul class="nav-links nav-left">
+        <li><a href="index.php">Início</a></li>
+        <li><a href="planos.html">Planos</a></li>
+      </ul>
+      <a href="index.php" class="nav-logo">
+        <img src="logo2.png" alt="Iron Haven Logo" >
+      </a>
+      <ul class="nav-links nav-right">
+        <li><a href="equipa.html">Equipa</a></li>
+        <li class="dropdown"><a href="marcacoes.php">Marcações</a>
+          <ul class="dropdown-menu">
+            <li><a href="marcacoes.php?tipo=training">Treinos</a></li>
+            <li><a href="marcacoes.php?tipo=consultation">Nutrição</a></li>
+            <li><a href="marcacoes.php?tipo=evaluation">Avaliações</a></li>
+          </ul>
+        </li>
+        <li><a href="progresso.php">Progresso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="login.html" class="nav-btn">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ <div class="register-wrapper" >
+  <form class="register-form" id="loginForm" autocomplete="off" >
+    <h2 >Entrar no Iron Haven</h2>
+    <div id="loginError" class="login-error" ></div>
+    <label for="username">Utilizador ou Email</label>
+    <input type="text" id="username" name="username" placeholder="Introduza o nome de utilizador ou email" required>
+    <label for="password">Palavra-passe</label>
+    <input type="password" id="password" name="password" placeholder="Introduza a palavra-passe" required>
+    <button type="submit" >Entrar</button>
+
+    <div class="login-options" >
+      <label >
+        <input type="checkbox" id="rememberMe" >
+        Lembrar-me
+      </label>
+      
+    </div>
+
+    <div class="register-login-link" >
+      <a href="registrar.html" >Criar Conta</a>
+    </div>
+  </form>
+</div>
+
+  
+
+    <footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="logo2.png" alt="Iron Haven Logo" class="footer-logo">
+      <p>Iron Haven &copy; 2025<br>
+        <span class="footer-small">Todos os direitos reservados</span>
+      </p>
+    </div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="index.php">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="planos.html">Planos</a></li>
+        <li><a href="marcacoes.php">Marcações</a></li>
+        <li><a href="progresso.php">Progresso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Siga-nos</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const redirectURL = params.get('redirect') || 'index.php';
+
+    // Login submit handler
+    document.getElementById('loginForm').onsubmit = function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      fetch('login.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, password})
+      })
+      .then(r => r.json())
+      .then(data => {
+        if(data.success){
+          window.location.href = redirectURL;
+        }else{
+          const err = document.getElementById('loginError');
+          err.style.display = 'block';
+          err.textContent = data.error || "Credenciais inválidas!";
+        }
+      })
+      .catch(()=>{
+        const err = document.getElementById('loginError');
+        err.style.display = 'block';
+        err.textContent = "Erro ao ligar ao servidor!";
+      });
+    };
+  </script>
+
+  
+</body>
+</html>
