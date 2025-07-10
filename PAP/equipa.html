@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Equipa | Iron Haven</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .team-grid {
+      display: flex; flex-wrap: wrap; gap: 36px; justify-content: center; margin-top: 30px;
+    }
+    .team-card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 38px 26px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 310px;
+      flex: 1 1 240px;
+    }
+    .team-card img {
+      width: 90px; height: 90px; object-fit: cover;
+      border-radius: 50%; margin-bottom: 16px; border: 3px solid var(--accent2);
+    }
+    .team-card h3 { color: var(--accent); margin-bottom: 8px; }
+    .team-card p { color: var(--gray); }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-flex">
+      <ul class="nav-links nav-left">
+        <li><a href="index.php">Início</a></li>
+        <li><a href="planos.html">Planos</a></li>
+      </ul>
+      <a href="index.php" class="nav-logo">
+        <img src="logo2.png" alt="Iron Haven Logo">
+      </a>
+      <ul class="nav-links nav-right">
+        <li><a href="equipa.html">Equipa</a></li>
+        <li class="dropdown"><a href="marcacoes.php">Marcações</a>
+          <ul class="dropdown-menu">
+            <li><a href="marcacoes.php?tipo=training">Treinos</a></li>
+            <li><a href="marcacoes.php?tipo=consultation">Nutrição</a></li>
+            <li><a href="marcacoes.php?tipo=evaluation">Avaliações</a></li>
+          </ul>
+        </li>
+        <li><a href="progresso.php">Progresso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="login.html" class="nav-btn">Login</a></li>
+      </ul>
+      <button id="nav-toggle" aria-label="Abrir Menu"><i class="fa fa-bars"></i></button>
+    </div>
+  </nav>
+  <main class="main-content">
+    <h1 class="section-title">A Nossa Equipa</h1>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Pedro Gomes">
+        <h3>Pedro Gomes</h3>
+        <p>Personal Trainer<br>Especialista em Musculação, Hipertrofia, Reabilitação.</p>
+      </div>
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ana Silva">
+        <h3>Ana Silva</h3>
+        <p>Instrutora de Grupo<br>HIIT, Yoga, BodyPump, Step.</p>
+      </div>
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Carlos Nunes">
+        <h3>Carlos Nunes</h3>
+        <p>Nutricionista<br>Planos alimentares, Consultoria Wellness.</p>
+      </div>
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Rita Sousa">
+        <h3>Rita Sousa</h3>
+        <p>Receção & Suporte<br>Acolhimento, Marcações, Atendimento geral.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:38px;">
+      <a href="marcacoes.php?tipo=training" class="btn btn-primary">Marcar Consulta com Personal Trainer</a>
+    </div>
+  </main>
+    <footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="logo2.png" alt="Iron Haven Logo" class="footer-logo">
+      <p>Iron Haven &copy; 2025<br>
+        <span class="footer-small">Todos os direitos reservados</span>
+      </p>
+    </div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="index.php">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="planos.html">Planos</a></li>
+        <li><a href="marcacoes.php">Marcações</a></li>
+        <li><a href="progresso.php">Progresso</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Siga-nos</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksLeft = document.querySelector('.nav-left');
+    const navLinksRight = document.querySelector('.nav-right');
+    navToggle.onclick = () => {
+     navLinksLeft.classList.toggle('open');
+     navLinksRight.classList.toggle('open');
+    };
+    const dropdown = document.querySelector('.dropdown');
+    if(dropdown){
+      dropdown.addEventListener('click', function(ev){
+        if(window.innerWidth <= 900){
+          ev.preventDefault();
+          dropdown.classList.toggle('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
